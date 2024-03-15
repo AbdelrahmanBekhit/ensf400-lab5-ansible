@@ -39,3 +39,18 @@ services:
     ports:
       - "3002:3000"
       - "2225:2225"
+
+  load_balancer:
+    image: nginx:alpine
+    container_name: load_balancer
+    restart: unless-stopped
+    networks:
+      - app-network
+    volumes:
+      - ./nginx.cfg:/etc/nginx/nginx.cfg
+    depends_on:
+      - managedhost-app-1
+      - managedhost-app-2
+      - managedhost-app-3
+    ports:
+      - "80:80"  
