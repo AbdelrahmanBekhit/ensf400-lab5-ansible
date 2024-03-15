@@ -55,7 +55,7 @@
   become: yes
   tasks:
     - name: Update cache
-      apt: update_cache=yes   
+      apt: update_cache=yes
 
     - name: Install Nginx
       apt:
@@ -65,14 +65,15 @@
     - name: Copy the Nginx config file to /etc/nginx/sites-available
       copy:
         src: nginx.cfg
-        dest: ./etc/nginx/sites-available/nginx.cfg
+        dest: /etc/nginx/sites-available/nodeJs_load_balancer.cfg
       become: yes
 
     - name: Create symlink of the config file at /etc/nginx/sites-enabled
       file:
-        src: /etc/nginx/sites-available/nginx.cfg
-        dest: /etc/nginx/sites-enabled/nginx.cfg
+        src: /etc/nginx/sites-available/nodeJs_load_balancer.cfg
+        dest: /etc/nginx/sites-enabled/nodeJs_load_balancer.cfg
         state: link
+      become: yes
       
     - name: Restart nginx to apply changes
       service:

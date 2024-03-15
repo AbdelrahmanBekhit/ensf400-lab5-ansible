@@ -5,7 +5,8 @@ services:
     build: 
       context: managed-host/alpine/app1
     restart: unless-stopped
-    network_mode: "bridge"
+    networks:
+      - app-network
     environment:
       - SSH_ENABLE_ROOT=true
     volumes:
@@ -18,7 +19,8 @@ services:
     build: 
       context: managed-host/alpine/app2
     restart: unless-stopped
-    network_mode: "bridge"
+    networks:
+      - app-network
     environment:
       - SSH_ENABLE_ROOT=true
     volumes:
@@ -31,7 +33,8 @@ services:
     build: 
       context: managed-host/alpine/app3
     restart: unless-stopped
-    network_mode: "bridge"
+    networks:
+      - app-network
     environment:
       - SSH_ENABLE_ROOT=true
     volumes:
@@ -54,3 +57,7 @@ services:
       - managedhost-app-3
     ports:
       - "80:80"  
+
+  
+networks:
+  app-network:
