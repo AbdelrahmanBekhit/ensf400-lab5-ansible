@@ -1,6 +1,6 @@
 FROM nginx:alpine
 
-COPY ./nginx.cfg /etc/nginx/conf.d/default.cfg
+COPY ./nginx.conf etc/nginx/sites-available/nginx.conf
 
 # Expose ports
 EXPOSE 80

@@ -64,14 +64,14 @@
 
     - name: Copy the Nginx config file to /etc/nginx/sites-available
       copy:
-        src: nginx.cfg
-        dest: /etc/nginx/sites-available/nodeJs_load_balancer.cfg
+        src: nginx.conf
+        dest: /etc/nginx/sites-available/nodeJs_load_balancer.conf
       become: yes
 
     - name: Create symlink of the config file at /etc/nginx/sites-enabled
       file:
-        src: /etc/nginx/sites-available/nodeJs_load_balancer.cfg
-        dest: /etc/nginx/sites-enabled/nodeJs_load_balancer.cfg
+        src: /etc/nginx/sites-available/nodeJs_load_balancer.conf
+        dest: /etc/nginx/sites-enabled/nodeJs_load_balancer.conf
         state: link
       become: yes
       

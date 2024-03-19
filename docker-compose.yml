@@ -50,7 +50,7 @@ services:
     networks:
       - app-network
     volumes:
-      - ./nginx.cfg:/etc/nginx/nginx.cfg
+      - ./nginx.conf:/etc/nginx/nginx.conf
     depends_on:
       - managedhost-app-1
       - managedhost-app-2
